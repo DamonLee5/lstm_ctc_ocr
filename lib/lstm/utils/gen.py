@@ -79,7 +79,7 @@ def generator(batch_size=32, vis=False):
             if cfg.NCHANNELS == 1:
                 im = cv2.cvtColor(im,cv2.COLOR_BGR2GRAY)
                 #im = np.expand_dims(im,axis=2)
-            # print(im.shape,' ',label)
+            print(im.shape,' ',label)
             if vis:
                 fig, axs = plt.subplots(2, 1, figsize=(50, 30))
                 if cfg.NCHANNELS==1: axs[0].imshow(im[:, :])
@@ -95,6 +95,7 @@ def generator(batch_size=32, vis=False):
 
                 plt.tight_layout()
                 plt.show()
+                plt.savefig("a.png")
                 plt.close()
 
             images.append(im)
@@ -130,8 +131,9 @@ def get_batch(num_workers, **kwargs):
             enqueuer.stop()
 
 if __name__ == '__main__':
-    # gen = generator(batch_size=32, vis=False)
+    #gen = generator(batch_size=32, vis=True)
     gen = get_batch(num_workers=24,batch_size=32,vis=False)
-    while True:
-        images, labels,label_len,time_step =  next(gen)
-        print(len(images)," ",images[0].shape)
+    images, labels,label_len,time_step =  next(gen)
+    print(len(images)," ",images[0].shape)
+    plt.imshow(images[0])
+    plt.savefig("a.png")
