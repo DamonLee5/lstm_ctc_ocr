@@ -10,13 +10,14 @@ import scipy.optimize
 import matplotlib.pyplot as plt
 import matplotlib.patches as Patches
 #from shapely.geometry import Polygon
+import sys
 sys.path.append("/mnt/Samsung860/Wenrui/lstm_ctc_ocr/")
 from lib.utils.data_util import GeneratorEnqueuer
 from lib.lstm.config import cfg,get_encode_decode_dict
 import tensorflow as tf
 from captcha.image import ImageCaptcha
 import cv2
-import sys
+
 
 
 def randRGB():
